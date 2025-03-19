@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>Dojo Fruit Store Assignment</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+</head>
+<body>
+
+    <header>
+        <div class="navbar navbar-dark bg-dark box-shadow">
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <strong>Dojo Fruit Store</strong>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main role="main">
+
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">Thank you for your order, {{ first_name }} {{ last_name }}!</h1>
+                <p class="lead text-muted">We ordered {{ strawberry + raspberry + apple }} items for you.</p>
+            </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <h4 class="mb-3">You have ordered</h4>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Fruit Name</th>
+                        <th>Quantity</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if strawberry > 0 %}
+                    <tr>
+                        <td>Strawberry</td>
+                        <td>{{ strawberry }}</td>
+                    </tr>
+                    {% endif %}
+                    {% if raspberry > 0 %}
+                    <tr>
+                        <td>Raspberry</td>
+                        <td>{{ raspberry }}</td>
+                    </tr>
+                    {% endif %}
+                    {% if apple > 0 %}
+                    <tr>
+                        <td>Apple</td>
+                        <td>{{ apple }}</td>
+                    </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+
+                <h4 class="mb-3">Your Information</h4>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        First Name: {{ first_name }}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        Last Name: {{ last_name }}
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    Your Student ID: {{ student_id }}
+                </div>
+              
+                <hr class="mb-4">
+                <a class="btn btn-primary btn-lg btn-block" href="/">Go Back</a>
+            
+            </div>
+        </div>
+
+    </main>
+    
+</body>
+</html>
