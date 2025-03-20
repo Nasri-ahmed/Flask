@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin: 50px; 
+        }
+        h1 {
+            font-size: 40px;
+            font-weight: bold;
+        }
+        p {
+            font-size: 30px;
+            font-weight: bold;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        .btn-click {
+            background-color: yellow;
+            color: black;
+        }
+        .btn-reset {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Counter</h1>
+    <p>{{ counter }}</p>
+
+    <!-- Boutons -->
+    <a href="/increment"><button class="btn-click">Click</button></a>
+    <a href="/reset"><button class="btn-reset">Reset</button></a>
+
+</body>
+</html>
