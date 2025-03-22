@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Number Game</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .message { 
+            font-size: 20px; 
+            font-weight: bold; 
+            padding: 30px; 
+            color: white; 
+            width: 300px; 
+            height: 80px;
+            margin: 10px auto; 
+            text-align: center; 
+            margin-bottom: 10px;
+        }
+        .red { background-color: red; }
+        .blue { background-color: blue; }
+        .green { background-color: green; }
+        .black { background-color: black; }
+        .orange { background-color: orange; }
+    </style>
+</head>
+<body>
+    <h1>Great Number Game</h1>
+    <p>Guess a number between 1 and 100</p>
+
+    {% if message %}
+        <div class="message {{ color }}">{{ message }}</div>
+    {% endif %}
+
+    {% if not game_over %}
+        <form action="/process_guess" method="POST">
+            <input type="number" name="user_input" required>
+            <button type="submit">Submit </button>
+        </form>
+    {% else %}
+        <a href="/reset"><button>Play Again</button></a>
+    {% endif %}
+</body>
+</html>
+
+    <p>Attempts: {{ attempts }}/5</p>
+</body>
+</html>
