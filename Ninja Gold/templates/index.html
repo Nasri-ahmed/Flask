@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Gold</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .location {
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+            flex: 1 1 calc(25% - 40px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .location h2 {
+            margin-top: 0;
+        }
+        .location p {
+            margin: 10px 0;
+        }
+        .location input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .location input[type="submit"]:hover {
+            background-color: #218838;
+        }
+        .activities {
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .activities h2 {
+            margin-top: 0;
+        }
+        .activity-log {
+            height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .activity-log p {
+            margin: 5px 0;
+        }
+        .green {
+            color: green;
+        }
+        .red {
+            color: red;
+        }
+        .reset-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .reset-button input[type="submit"] {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .reset-button input[type="submit"]:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Gold: {{ gold }}</h1>
+    <div class="container">
+        <div class="location">
+            <h2>Farm</h2>
+            <p>(earns 10-20 golds)</p>
+            <form action="/process_money" method="post">
+                <input type="hidden" name="building" value="farm" />
+                <input type="submit" value="Find Gold!"/>
+            </form>
+        </div>
+        <div class="location">
+            <h2>Cave</h2>
+            <p>(earns 5-10 golds)</p>
+            <form action="/process_money" method="post">
+                <input type="hidden" name="building" value="cave" />
+                <input type="submit" value="Find Gold!"/>
+            </form>
+        </div>
+        <div class="location">
+            <h2>House</h2>
+            <p>(earns 2-5 golds)</p>
+            <form action="/process_money" method="post">
+                <input type="hidden" name="building" value="house" />
+                <input type="submit" value="Find Gold!"/>
+            </form>
+        </div>
+        <div class="location">
+            <h2>Casino</h2>
+            <p>(earns/takes 0-50 golds)</p>
+            <form action="/process_money" method="post">
+                <input type="hidden" name="building" value="casino" />
+                <input type="submit" value="Find Gold!"/>
+            </form>
+        </div>
+    </div>
+    <div class="activities">
+        <h2>Activities:</h2>
+        <div class="activity-log">
+            {% for activity in activities %}
+                <p class="{{ activity['color'] }}">{{ activity['message'] }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="reset-button">
+        <form action="/reset" method="post">
+            <input type="submit" value="Reset"/>
+        </form>
+    </div>
+</body>
+</html>
